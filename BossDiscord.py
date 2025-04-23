@@ -8,7 +8,7 @@ intents.message_content = True  # Necesario para permitir que el bot lea los men
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-boss_names = ["Surbora", "Utumno", "Nazrudin"]
+boss_names = ["Surbora", "Utumno", "Nazrudin","Aschenbrand"]
 timers_per_boss = {boss: [3600 for _ in range(8)] for boss in boss_names}  # 1 hora (3600 segundos) por canal
 
 
@@ -79,8 +79,8 @@ async def estado(ctx, boss_name: str):
     save_state()
 
 
-@bot.command(name="clear_history")
-async def clear_history(ctx):
+@bot.command(name="clear")
+async def clear(ctx):
     """Limpia el estado de los temporizadores (resetea todo a 3600 segundos)."""
     global timers_per_boss
     timers_per_boss = {boss: [3600 for _ in range(8)] for boss in boss_names}
